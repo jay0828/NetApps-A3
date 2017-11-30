@@ -36,7 +36,7 @@ def handleLED():
     payload = {'color': color, 'status': status, 'intensity' : intensity}
     zc = requests.get('http://172.29.81.174:800/LED', params=payload)
     led.LED(status, color, intensity)
-    return None
+    return '"Color changed to: ", color'
 
 
 
