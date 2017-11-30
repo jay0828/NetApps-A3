@@ -36,7 +36,8 @@ def handleLED():
     info = zc.get_service_info("_http._tcp.local.", "LED PI._http._tcp.local.")
     
     payload = {'color': color, 'status': status, 'intensity' : intensity}
-    address = str(info.address) + ":" + str(info.port) + "/LED"
+    
+    address = socket.inet_ntoa(info.address.decode) + ":" + str(info.port) + "/LED"
     zc = requests.get(address, params=payload)
     return "Color changed to: " + color
 
