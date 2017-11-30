@@ -34,11 +34,7 @@ def handleLED():
     zc = zeroconf.Zeroconf()
     info = zc.get_service_info("_http._tcp.local.", "LED PI._http._tcp.local.")
     payload = {'color': color, 'status': status, 'intensity' : intensity}
-    zc = requests.get('http://172.29.81.174:800/LED', params=payload)
-    led.LED(status, color, intensity)
-    print(color)
-    print(status)
-    print(intensity)
+    zc = requests.get('http://172.29.81.174:80/LED', params=payload)
     return str("Color changed to: ", color)
 
 

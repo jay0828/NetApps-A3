@@ -36,8 +36,9 @@ setup(RED, GREEN, BLUE)
 
 
 @app.route('/LED')
-def LED(status, color, intensity):
+def LED():
     if(status == 'on'):
+        print("made it here")
         if(color == 'red'):
             red_on(int(intensity))
         elif(color == 'green'):
@@ -126,7 +127,7 @@ if __name__ == '__main__':
                        {'Available Colors': "'red', 'blue', 'green', 'yellow', 'cyan', 'magenta', 'white'"}, "ash-2.local.")
     zconf = zeroconf.Zeroconf()
     zconf.register_service(info)
-    app.run(host, port=800, debug=False)
+    app.run(host, port=80, debug=False)
     try:
         while True:
             sleep(0.1)
