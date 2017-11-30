@@ -36,7 +36,7 @@ setup(RED, GREEN, BLUE)
 
 
 @app.route('/LED')
-def LED():
+def LED(status, color, intensity):
     if(status == 'on'):
         if(color == 'red'):
             red_on(int(intensity))
