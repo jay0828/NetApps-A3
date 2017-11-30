@@ -8,6 +8,7 @@ import led
 import requests
 from led import red_on, blue_on, green_on, magenta_on, yellow_on, cyan_on, white_on
 import zeroconf
+import socket
 
 app = Flask(__name__)
 
