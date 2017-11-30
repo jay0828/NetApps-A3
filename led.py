@@ -120,10 +120,14 @@ def white_on(intensity):
     
 
 if __name__ == '__main__':
-    host = '172.29.81.174'
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    ip = (s.getsockname()[0])
+    s.close()
+    host = ip
     info = zeroconf.ServiceInfo("_http._tcp.local.",
                        "LED PI._http._tcp.local.",
-                       socket.inet_aton("172.29.81.174"), 800, 0, 0,
+                       socket.inet_aton(host), 800, 0, 0,
                        {'Available Colors': "'red', 'blue', 'green', 'yellow', 'cyan', 'magenta', 'white'"}, "ash-2.local.")
     zconf = zeroconf.Zeroconf()
     zconf.register_service(info)

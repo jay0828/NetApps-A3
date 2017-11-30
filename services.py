@@ -27,15 +27,17 @@ def get_pw(username):
     return None
 
 @app.route('/LED')
+@auth.login_required
 def handleLED():
     status = request.args.get('status')
     color = request.args.get('color')
     intensity = request.args.get('intensity')
     zc = zeroconf.Zeroconf()
     info = zc.get_service_info("_http._tcp.local.", "LED PI._http._tcp.local.")
+    
     payload = {'color': color, 'status': status, 'intensity' : intensity}
-    zc = requests.get('http://172.29.81.174:80/LED', params=payload)
-    return str("Color changed to: ", color)
+    zc = requests.get(str(info.address, ':', info.port, '/LED'), params=payload)
+    return "Color changed to: " + color
 
 
 
