@@ -127,7 +127,7 @@ if __name__ == '__main__':
     host = ip
     info = zeroconf.ServiceInfo("_http._tcp.local.",
                        "LED PI._http._tcp.local.",
-                       socket.inet_aton(host), 800, 0, 0,
+                       socket.inet_aton(host), 80, 0, 0,
                        {'Available Colors': "'red', 'blue', 'green', 'yellow', 'cyan', 'magenta', 'white'"}, "ash-2.local.")
     zconf = zeroconf.Zeroconf()
     zconf.register_service(info)
