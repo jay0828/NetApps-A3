@@ -34,7 +34,9 @@ def handleLED():
     zc = zeroconf.Zeroconf()
     info = zc.get_service_info("_http._tcp.local.", "LED PI._http._tcp.local.")
     payload = {'color': color, 'status': status, 'intensity' : intensity}
+    print(color, status, intensity)
     zc = requests.get('http://172.29.81.174:800/LED', params=payload)
+    led.LED()
     return None
 
 
@@ -98,7 +100,7 @@ def update_password():
 
 @app.route('/letmein')
 def printIn():
-    print("made it")
+    return("made it")
     
 @app.route('/accounts', methods=['DELETE'])
 @auth.login_required
