@@ -34,7 +34,7 @@ def handleLED():
     zc = zeroconf.Zeroconf()
     info = zc.get_service_info("_http._tcp.local.", "LED PI._http._tcp.local.")
     payload = {'color': color, 'status': status, 'intensity' : intensity}
-    zc = requests.get('http://172.29.81.174:5000/LED', params=payload)
+    zc = requests.get('http://172.29.81.174:800/LED', params=payload)
     return None
 
 
@@ -119,5 +119,5 @@ def remove_account():
     return jsonify({'Deleted': output})
 
 if __name__ == '__main__':
-    app.run(host='172.29.81.174', port=800, debug=True)
+    app.run(host='172.29.19.69', port=5000, debug=True)
     
