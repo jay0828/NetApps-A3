@@ -37,6 +37,9 @@ setup(RED, GREEN, BLUE)
 
 @app.route('/LED')
 def LED():
+    status = request.args.get('status')
+    color = request.args.get('color')
+    intensity = request.args.get('intensity')
     if(status == 'on'):
         print("made it here")
         if(color == 'red'):
